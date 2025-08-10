@@ -1,0 +1,9 @@
+syntax = "proto2";
+
+package Portator;
+option csharp_namespace = "Portator";
+
+message Message {
+  optional string from = 1; // sender
+  repeated string to = 2; // one or more recipients
+}
