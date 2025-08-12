@@ -11,9 +11,14 @@
     <PackageReference Include="Grpc.Tools" Version="2.*">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
+  <PackageReference Include="Grpc.Net.Client" Version="2.*" />
+  <PackageReference Include="Grpc.AspNetCore" Version="2.*" />
   </ItemGroup>
 
   <ItemGroup>
+    <Protobuf Include="Contact.proto" GrpcServices="None" />
     <Protobuf Include="Message.proto" GrpcServices="None" />
+    <Protobuf Include="EncryptedMessage.proto" GrpcServices="None" />
+    <Protobuf Include="Proxy.proto" GrpcServices="Both" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,19 @@
+syntax = "proto2";
+
+package Portator;
+option csharp_namespace = "Portator";
+
+message Contact {
+    optional string name = 1; // User-friendly displayable name, e.g. "Matt from D&D"
+
+    optional string public_key_curve25519 = 2; // Base64 encoded of public key bytes (Curve25519, 32 bytes), e.g. "ropA12NEEdrou2CVamYf8qQDqHuhFrArk+MRIhapSkU=", used for encrypting messages
+
+    optional string public_key_ed25519 = 3; // Base64 encoded of public key bytes (Ed25519), used for signing messages
+
+    optional string tailscale_address = 4; // Tailscale addresses (with port) that can receive messages for this Contact, e.g. "portator.tail4c18a.ts.net:49994"
+
+    optional string tailscale_share_invite = 5; // e.g. "https://login.tailscale.com/admin/invite/PHDyht3iAeC6BrWqDGbK21"
+
+    // TODO: "portator://MattCruikshank:ropA12NEEdrou2CVamYf8qQDqHuhFrArk-MRIhapSkU@portator.tail4c18a.ts.net:49994/?inviteCode=PHDyht3iAeC6BrWqDGbK21"
+    // portator://[nickname:]curve25519@host:port/?inviteCode=inviteCode
+}

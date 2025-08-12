@@ -1,0 +1,16 @@
+syntax = "proto2";
+
+package Portator;
+option csharp_namespace = "Portator";
+
+// Represents an encrypted message using libsodium's crypto_box scheme.
+message EncryptedMessage {
+  // The sender's public key bytes (Curve25519, 32 bytes).
+  optional bytes sender_public_key_curve25519 = 1;
+
+  // The nonce used for encryption (must be unique per message/key).
+  optional bytes nonce = 2;
+
+  // The encrypted ciphertext bytes.
+  optional bytes ciphertext = 3;
+}

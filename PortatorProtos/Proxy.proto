@@ -1,0 +1,24 @@
+syntax = "proto2";
+
+package PortatorProxy;
+option csharp_namespace = "PortatorProxy";
+
+message ContactsRequest {
+}
+
+message Contact {
+    optional string name = 1; // User-friendly displayable name, e.g. "Matt from D&D"
+
+    optional string public_key_curve25519 = 2; // Base64 encoded of public key bytes (Curve25519, 32 bytes), e.g. "ropA12NEEdrou2CVamYf8qQDqHuhFrArk+MRIhapSkU="
+
+    repeated string tailscale_addresses = 3; // An ordered list of the (Tailscale) addresses that can receive messages for this Contact, e.g. "portator.tail4c18a.ts.net:49994"
+}
+
+message ContactsResponse {
+  repeated Contact contacts = 1;
+}
+
+// gRPC service definition for the proxy.
+service ProxyService {
+  rpc GetContacts (ContactsRequest) returns (ContactsResponse);
+}
