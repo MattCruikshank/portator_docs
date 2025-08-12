@@ -1,10 +1,12 @@
 syntax = "proto2";
 
+import "Contact.proto";
+
 package Portator;
 option csharp_namespace = "Portator";
 
 message Message {
-  optional string from = 1; // sender
-  optional string to = 2; // recipient
+  optional Contact from = 1; // sender
+  optional Contact to = 2; // recipient
   repeated string body = 3;
 }

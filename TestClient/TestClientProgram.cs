@@ -6,18 +6,13 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
-        Contact contact = new Contact
-        {
-            Name = "Matt",
-            TailscaleAddress = "localhost:49994"
-        };
+        Console.WriteLine("TestClientProgram");
         Message message = new Message
         {
-            From = "Matt",
-            To = "Tom",
+            From = Client.GetSelfContact(),
+            To = Client.GetAllContacts().First(),
             Body = { "First line", "Second line!" }
         };
-        Client.UnreliablySendMessage(contact, message);
+        Client.UnreliablySendMessage(message);
     }
 }

@@ -8,16 +8,30 @@ using Sodium;
 
 public class Client
 {
-    // public IEnumerable<Contact> GetAllContacts() {
-    //     return Enumerable.Empty<Contact>();
-    // }
+    public static Contact GetSelfContact()
+    {
+        return new Contact
+        {
+            Name = "Matt",
+            TailscaleAddress = "localhost:49994"
+        };
+    }
+
+    public static IEnumerable<Contact> GetAllContacts()
+    {
+        List<Contact> result = new List<Contact>();
+        result.Add(new Contact() {
+            Name = "Tom",
+            TailscaleAddress = "localhost:49995"
+        });
+        return result;
+    }
 
     // If the recipient is online, they receive the message immediately.  Like UDP.
-    public static void UnreliablySendMessage(Contact contact, Message message)
+    public static void UnreliablySendMessage(Message message)
     {
         Console.WriteLine("UnreliablySendMessage");
-        Console.WriteLine($"contact: {contact}");
-        Console.WriteLine($"message: {message}");
+        Console.WriteLine($"  message: {message}");
     }
 
     // If the recipient is online, have a two-way conversation.
