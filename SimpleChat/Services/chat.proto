@@ -1,0 +1,13 @@
+syntax = "proto2";
+
+package SimpleChat;
+option csharp_namespace = "SimpleChat";
+
+message ChatMessage {
+  optional string sender = 1;
+  optional string body = 2;
+}
+
+service Chat {
+  rpc ChatStream(stream ChatMessage) returns (stream ChatMessage);
+}
